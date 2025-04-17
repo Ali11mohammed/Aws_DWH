@@ -157,10 +157,9 @@ SELECT DISTINCT
     se.userAgent
 FROM staging_events se
 JOIN staging_songs ss
-    ON LOWER(TRIM(se.song)) = LOWER(TRIM(ss.title))
-    AND LOWER(TRIM(se.artist)) = LOWER(TRIM(ss.artist_name))
-    AND ABS(se.length - ss.duration) < 2.0
+    ON se.song = ss.title AND se.artist = ss.artist_name
 WHERE se.page = 'NextSong';
+
 """)
 
 
